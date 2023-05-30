@@ -149,8 +149,8 @@ namespace Chess.Scripts.Core
                 }
             }
             return null;
-        }
-
+        }      
+        
         private void CreateHighlight(int row, int column)
         {
             GameObject highlight = Instantiate(_highlightPrefab, boardPlacementHandler.GetTile(row, column).transform.position, Quaternion.identity, boardPlacementHandler.GetTile(row, column).transform);

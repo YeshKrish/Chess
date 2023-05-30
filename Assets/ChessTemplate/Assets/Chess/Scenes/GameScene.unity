@@ -2741,8 +2741,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7d0d607122f458d97ba7f7c19066613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  row: 0
-  column: 4
+  row: 5
+  column: 2
 --- !u!212 &436212029
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4642,8 +4642,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7d0d607122f458d97ba7f7c19066613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  row: 2
-  column: 1
+  row: 5
+  column: 3
 --- !u!212 &988456210
 SpriteRenderer:
   m_ObjectHideFlags: 0
