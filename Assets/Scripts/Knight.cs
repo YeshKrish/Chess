@@ -9,6 +9,7 @@ namespace Chess.Scripts.Core
         private ChessBoardPlacementHandler boardPlacementHandler;
         private ChessPlayerPlacementHandler playerPlacementHandler;
         [SerializeField] private GameObject _highlightPrefab;
+        private Highlighter currentHighlighter;
 
         private void Start()
         {
@@ -22,32 +23,46 @@ namespace Chess.Scripts.Core
             int currentRow = playerPlacementHandler.row;
             int currentColumn = playerPlacementHandler.column;
 
-            // Example logic for calculating possible moves
+            // Clear previous highlights
             boardPlacementHandler.ClearHighlights();
 
-            // Check for possible moves in L-shape patterns
-            CheckKnightMove(currentRow + 2, currentColumn + 1);
-            CheckKnightMove(currentRow + 2, currentColumn - 1);
-            CheckKnightMove(currentRow - 2, currentColumn + 1);
-            CheckKnightMove(currentRow - 2, currentColumn - 1);
-            CheckKnightMove(currentRow + 1, currentColumn + 2);
-            CheckKnightMove(currentRow + 1, currentColumn - 2);
-            CheckKnightMove(currentRow - 1, currentColumn + 2);
-            CheckKnightMove(currentRow - 1, currentColumn - 2);
-        }
-
-        private void CheckKnightMove(int row, int column)
-        {
-            if (row >= 0 && row < 8 && column >= 0 && column < 8)
+            // Calculate possible knight moves using relative positions
+            int[,] knightMoves = new int[,]
             {
-                ChessPlayerPlacementHandler handler = GetChessPlayerPlacementHandler(row, column);
-                if (handler == null)
+                { 1, 2 }, { -1, 2 }, { 1, -2 }, { -1, -2 },
+                { 2, 1 }, { -2, 1 }, { 2, -1 }, { -2, -1 }
+            };
+
+            // Check each knight move
+            for (int i = 0; i < knightMoves.GetLength(0); i++)
+            {
+                int row = currentRow + knightMoves[i, 0];
+                int col = currentColumn + knightMoves[i, 1];
+
+                // Check if the row and column are within bounds
+                if (row >= 0 && row < 8 && col >= 0 && col < 8)
                 {
-                    boardPlacementHandler.Highlight(row, column);
-                }
-                else if (handler.IsWhite != isWhite)
-                {
-                    boardPlacementHandler.Highlight(row, column);
+                    // Check the tile at the current row and column
+                    GameObject tile = boardPlacementHandler.GetTile(row, col);
+                    if (tile != null)
+                    {
+                        // Check if there is a piece at the current tile
+                        ChessPlayerPlacementHandler handler = GetChessPlayerPlacementHandler(row, col);
+                        if (handler == null)
+                        {
+                            // If the tile is empty, create a highlight
+                            CreateHighlight(row, col);
+                        }
+                        else
+                        {
+                            // If there is a piece, check if it is an enemy piece
+                            if (handler.IsWhite != isWhite)
+                            {
+                                // If it is an enemy piece, create a highlight
+                                CreateHighlight(row, col);
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -64,6 +79,22 @@ namespace Chess.Scripts.Core
                 }
             }
             return null;
+        }
+
+        private void CreateHighlight(int row, int column)
+        {
+            GameObject highlight = Instantiate(_highlightPrefab, boardPlacementHandler.GetTile(row, column).transform.position, Quaternion.identity, boardPlacementHandler.GetTile(row, column).transform);
+            currentHighlighter = highlight.GetComponent<Highlighter>();
+            currentHighlighter.OnHighlightCollision += OnHighlightCollision;
+        }
+
+        private void OnHighlightCollision(bool isHitBlack)
+        {
+            if (isHitBlack)
+            {
+                // Stop creating highlights
+                currentHighlighter.OnHighlightCollision -= OnHighlightCollision;
+            }
         }
     }
 }

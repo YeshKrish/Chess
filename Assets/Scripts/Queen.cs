@@ -9,7 +9,7 @@ namespace Chess.Scripts.Core
         private ChessBoardPlacementHandler boardPlacementHandler;
         private ChessPlayerPlacementHandler playerPlacementHandler;
         [SerializeField] private GameObject _highlightPrefab;
-
+        private Highlighter highlighter;
         private void Start()
         {
             boardPlacementHandler = ChessBoardPlacementHandler.Instance;
@@ -22,150 +22,102 @@ namespace Chess.Scripts.Core
             int currentRow = playerPlacementHandler.row;
             int currentColumn = playerPlacementHandler.column;
 
-            // Example logic for calculating possible moves
+            // Clear previous highlights
             boardPlacementHandler.ClearHighlights();
 
-            // Check for possible moves in the same row
+            // Check for possible moves in the same row (forward and backward)
             for (int i = currentColumn + 1; i < 8; i++)
             {
-                GameObject tile = boardPlacementHandler.GetTile(currentRow, i);
-                if (tile != null)
-                {
-                    ChessPlayerPlacementHandler handler = GetChessPlayerPlacementHandler(currentRow, i);
-                    if (handler == null)
-                    {
-                        CreateHighlight(currentRow, i);
-                    }
-                    else
-                    {
-                        if (handler.IsWhite != isWhite)
-                        {
-                            CreateHighlight(currentRow, i);
-                        }
-                        break;
-                    }
-                }
+                if (!CheckMove(currentRow, i))
+                    break;
+            }
+            for (int i = currentColumn - 1; i >= 0; i--)
+            {
+                if (!CheckMove(currentRow, i))
+                    break;
             }
 
-            // Check for possible moves in the same column
+            // Check for possible moves in the same column (upward and downward)
             for (int i = currentRow + 1; i < 8; i++)
             {
-                GameObject tile = boardPlacementHandler.GetTile(i, currentColumn);
-                if (tile != null)
-                {
-                    ChessPlayerPlacementHandler handler = GetChessPlayerPlacementHandler(i, currentColumn);
-                    if (handler == null)
-                    {
-                        CreateHighlight(i, currentColumn);
-                    }
-                    else
-                    {
-                        if (handler.IsWhite != isWhite)
-                        {
-                            CreateHighlight(i, currentColumn);
-                        }
-                        break;
-                    }
-                }
+                if (!CheckMove(i, currentColumn))
+                    break;
             }
-
-            // Check for possible moves in the diagonals
-            for (int i = 1; i < 8; i++)
+            for (int i = currentRow - 1; i >= 0; i--)
             {
-                // Top-Left diagonal
-                int row = currentRow + i;
-                int col = currentColumn - i;
-                if (row < 8 && col >= 0)
-                {
-                    GameObject tile = boardPlacementHandler.GetTile(row, col);
-                    if (tile != null)
-                    {
-                        ChessPlayerPlacementHandler handler = GetChessPlayerPlacementHandler(row, col);
-                        if (handler == null)
-                        {
-                            CreateHighlight(row, col);
-                        }
-                        else
-                        {
-                            if (handler.IsWhite != isWhite)
-                            {
-                                CreateHighlight(row, col);
-                            }
-                            break;
-                        }
-                    }
-                }
-
-                row = currentRow + i;
-                col = currentColumn + i;
-                if (row < 8 && col < 8)
-                {
-                    GameObject tile = boardPlacementHandler.GetTile(row, col);
-                    if (tile != null)
-                    {
-                        ChessPlayerPlacementHandler handler = GetChessPlayerPlacementHandler(row, col);
-                        if (handler == null)
-                        {
-                            CreateHighlight(row, col);
-                        }
-                        else
-                        {
-                            if (handler.IsWhite != isWhite)
-                            {
-                                CreateHighlight(row, col);
-                            }
-                            break;
-                        }
-                    }
-                }
-
-                row = currentRow - i;
-                col = currentColumn - i;
-                if (row >= 0 && col >= 0)
-                {
-                    GameObject tile = boardPlacementHandler.GetTile(row, col);
-                    if (tile != null)
-                    {
-                        ChessPlayerPlacementHandler handler = GetChessPlayerPlacementHandler(row, col);
-                        if (handler == null)
-                        {
-                            CreateHighlight(row, col);
-                        }
-                        else
-                        {
-                            if (handler.IsWhite != isWhite)
-                            {
-                                CreateHighlight(row, col);
-                            }
-                            break;
-                        }
-                    }
-                }
-
-                row = currentRow - i;
-                col = currentColumn + i;
-                if (row >= 0 && col < 8)
-                {
-                    GameObject tile = boardPlacementHandler.GetTile(row, col);
-                    if (tile != null)
-                    {
-                        ChessPlayerPlacementHandler handler = GetChessPlayerPlacementHandler(row, col);
-                        if (handler == null)
-                        {
-                            CreateHighlight(row, col);
-                        }
-                        else
-                        {
-                            if (handler.IsWhite != isWhite)
-                            {
-                                CreateHighlight(row, col);
-                            }
-                            break;
-                        }
-                    }
-                }
-
+                if (!CheckMove(i, currentColumn))
+                    break;
             }
+
+            // Check for possible moves in the top-left diagonal
+            int row = currentRow + 1;
+            int col = currentColumn - 1;
+            while (row < 8 && col >= 0)
+            {
+                if (!CheckMove(row, col))
+                    break;
+                row++;
+                col--;
+            }
+
+            // Check for possible moves in the top-right diagonal
+            row = currentRow + 1;
+            col = currentColumn + 1;
+            while (row < 8 && col < 8)
+            {
+                if (!CheckMove(row, col))
+                    break;
+                row++;
+                col++;
+            }
+
+            // Check for possible moves in the bottom-left diagonal
+            row = currentRow - 1;
+            col = currentColumn - 1;
+            while (row >= 0 && col >= 0)
+            {
+                if (!CheckMove(row, col))
+                    break;
+                row--;
+                col--;
+            }
+
+            // Check for possible moves in the bottom-right diagonal
+            row = currentRow - 1;
+            col = currentColumn + 1;
+            while (row >= 0 && col < 8)
+            {
+                if (!CheckMove(row, col))
+                    break;
+                row--;
+                col++;
+            }
+        }
+
+        private bool CheckMove(int row, int column)
+        {
+            GameObject tile = boardPlacementHandler.GetTile(row, column);
+            if (tile != null)
+            {
+                ChessPlayerPlacementHandler handler = GetChessPlayerPlacementHandler(row, column);
+                if (handler == null)
+                {
+                    // If the tile is empty, create a highlight
+                    CreateHighlight(row, column);
+                    return true;
+                }
+                else
+                {
+                    // If there is a piece, check if it is an enemy piece
+                    if (handler.IsWhite != isWhite)
+                    {
+                        // If it is an enemy piece, create a highlight and stop further movement
+                        CreateHighlight(row, column);
+                    }
+                    return false;
+                }
+            }
+            return false;
         }
 
         private ChessPlayerPlacementHandler GetChessPlayerPlacementHandler(int row, int column)
@@ -185,7 +137,7 @@ namespace Chess.Scripts.Core
         private void CreateHighlight(int row, int column)
         {
             GameObject highlight = Instantiate(_highlightPrefab, boardPlacementHandler.GetTile(row, column).transform.position, Quaternion.identity, boardPlacementHandler.GetTile(row, column).transform);
-            Highlighter highlighter = highlight.GetComponent<Highlighter>();
+            highlighter = highlight.GetComponent<Highlighter>();
             highlighter.OnHighlightCollision += OnHighlightCollision;
         }
 
@@ -193,8 +145,8 @@ namespace Chess.Scripts.Core
         {
             if (isHitBlack)
             {
-                // Stop creating highlights or perform other actions
-                Debug.Log("Highlight collision detected with black piece.");
+                // Stop creating highlights
+                highlighter.OnHighlightCollision -= OnHighlightCollision;
             }
         }
     }
