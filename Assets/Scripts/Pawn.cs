@@ -6,14 +6,21 @@ namespace Chess.Scripts.Core
     {
         [SerializeField] private bool isWhite; // Set this to true if it's a white pawn
 
-
         private ChessBoardPlacementHandler boardPlacementHandler;
         private ChessPlayerPlacementHandler playerPlacementHandler;
+        [SerializeField] private GameObject _highlightPrefab;
+        private Highlighter highlighter;
+        private bool isFirstMove;
+        private Vector2 startingPosition;
 
         private void Start()
         {
             boardPlacementHandler = ChessBoardPlacementHandler.Instance;
-            playerPlacementHandler = GetComponent<Chess.Scripts.Core.ChessPlayerPlacementHandler>();
+            playerPlacementHandler = GetComponent<ChessPlayerPlacementHandler>();
+
+            // Store the starting position of the pawn
+            startingPosition = new Vector2(playerPlacementHandler.column, playerPlacementHandler.row);
+
         }
 
         private void OnMouseDown()
@@ -21,83 +28,115 @@ namespace Chess.Scripts.Core
             int currentRow = playerPlacementHandler.row;
             int currentColumn = playerPlacementHandler.column;
 
-            Debug.Log("Current Row" + currentRow + "Current Column" + currentColumn);
+            Debug.Log("isWhite" + (playerPlacementHandler.row > 1) + "Pler" + playerPlacementHandler.row);
+
+            if (isWhite)
+            {
+                isFirstMove = playerPlacementHandler.row > 1;
+            }
+            else
+            {
+                isFirstMove = playerPlacementHandler.row < 6;
+            }
 
             boardPlacementHandler.ClearHighlights();
 
-            if (playerPlacementHandler.IsWhite)
+            if (isWhite)
             {
-                Debug.Log("white");
-                // Calculate possible legal moves for a white pawn
-                // Move forward
-                if (currentRow < 7 && boardPlacementHandler.GetTile(currentRow + 1, currentColumn) != null)
+                // Check for possible move forward
+                if (currentRow < 7)
                 {
-                    Debug.Log("I am inside");
-                    boardPlacementHandler.Highlight(currentRow + 1, currentColumn);
-
-                    // Move two steps forward on the first move
-                    if (currentRow == 1 && boardPlacementHandler.GetTile(currentRow + 2, currentColumn) != null)
+                    ChessPlayerPlacementHandler forwardHandler = GetChessPlayerPlacementHandler(currentRow + 1, currentColumn);
+                    if (forwardHandler == null)
                     {
-                        boardPlacementHandler.Highlight(currentRow + 2, currentColumn);
+                        CreateHighlight(currentRow + 1, currentColumn);
+                        if (!isFirstMove && currentColumn == startingPosition.x)
+                        {
+                            ChessPlayerPlacementHandler doubleForwardHandler = GetChessPlayerPlacementHandler(currentRow + 2, currentColumn);
+                            if (doubleForwardHandler == null)
+                            {
+                                CreateHighlight(currentRow + 2, currentColumn);
+                            }
+                            else if(doubleForwardHandler != null && doubleForwardHandler.IsWhite != isWhite)
+                            {
+                                CreateHighlight(currentRow + 2, currentColumn);
+                            }
+                        }
+                    }
+                    else if(forwardHandler != null && forwardHandler.IsWhite != isWhite)
+                    {
+                        CreateHighlight(currentRow + 1, currentColumn);
                     }
                 }
+
+                // Check for possible capture moves
                 if (currentRow < 7 && currentColumn > 0)
                 {
-                    ChessPlayerPlacementHandler leftDiagonalHandler = GetChessPlayerPlacementHandler(currentRow + 1, currentColumn - 1);
-                    if (leftDiagonalHandler != null && leftDiagonalHandler.IsWhite != isWhite)
+                    ChessPlayerPlacementHandler captureLeftHandler = GetChessPlayerPlacementHandler(currentRow + 1, currentColumn - 1);
+                    if (captureLeftHandler != null && captureLeftHandler.IsWhite != isWhite)
                     {
-                        // Enemy piece in the left diagonal position
-                        boardPlacementHandler.Highlight(currentRow + 1, currentColumn - 1);
+                        CreateHighlight(currentRow + 1, currentColumn - 1);
                     }
                 }
 
                 if (currentRow < 7 && currentColumn < 7)
                 {
-                    ChessPlayerPlacementHandler rightDiagonalHandler = GetChessPlayerPlacementHandler(currentRow + 1, currentColumn + 1);
-                    if (rightDiagonalHandler != null && rightDiagonalHandler.IsWhite != isWhite)
+                    ChessPlayerPlacementHandler captureRightHandler = GetChessPlayerPlacementHandler(currentRow + 1, currentColumn + 1);
+                    if (captureRightHandler != null && captureRightHandler.IsWhite != isWhite)
                     {
-                        // Enemy piece in the right diagonal position
-                        boardPlacementHandler.Highlight(currentRow + 1, currentColumn + 1);
+                        CreateHighlight(currentRow + 1, currentColumn + 1);
                     }
                 }
             }
-        
             else
             {
-                // Calculate possible legal moves for a black pawn
-                // Move forward
-                if (currentRow > 0 && boardPlacementHandler.GetTile(currentRow - 1, currentColumn) != null)
+                // Check for possible move forward
+                if (currentRow > 0)
                 {
-                    boardPlacementHandler.Highlight(currentRow - 1, currentColumn);
-
-                    // Move two steps forward on the first move
-                    if (currentRow == 6 && boardPlacementHandler.GetTile(currentRow - 2, currentColumn) != null)
+                    ChessPlayerPlacementHandler forwardHandler = GetChessPlayerPlacementHandler(currentRow - 1, currentColumn);
+                    if (forwardHandler == null)
                     {
-                        boardPlacementHandler.Highlight(currentRow - 2, currentColumn);
+                        CreateHighlight(currentRow - 1, currentColumn);
+                        if (!isFirstMove && currentColumn == startingPosition.x)
+                        {
+                            ChessPlayerPlacementHandler doubleForwardHandler = GetChessPlayerPlacementHandler(currentRow - 2, currentColumn);
+                            if (doubleForwardHandler == null)
+                            {
+                                CreateHighlight(currentRow - 2, currentColumn);
+                            }
+                            else if (doubleForwardHandler != null && doubleForwardHandler.IsWhite != isWhite)
+                            {
+                                CreateHighlight(currentRow - 2, currentColumn);
+                            }
+                        }
+                    }
+                    else if (forwardHandler != null && forwardHandler.IsWhite != isWhite)
+                    {
+                        CreateHighlight(currentRow - 1, currentColumn);
                     }
                 }
 
-                // Capture diagonally if there is an enemy piece
+                // Check for possible capture moves
                 if (currentRow > 0 && currentColumn > 0)
                 {
-                    ChessPlayerPlacementHandler leftDiagonalHandler = GetChessPlayerPlacementHandler(currentRow - 1, currentColumn - 1);
-                    if (leftDiagonalHandler != null && leftDiagonalHandler.IsWhite != isWhite)
+                    ChessPlayerPlacementHandler captureLeftHandler = GetChessPlayerPlacementHandler(currentRow - 1, currentColumn - 1);
+                    if (captureLeftHandler != null && captureLeftHandler.IsWhite != isWhite)
                     {
-                        // Enemy piece in the left diagonal position
-                        boardPlacementHandler.Highlight(currentRow - 1, currentColumn - 1);
+                        CreateHighlight(currentRow - 1, currentColumn - 1);
                     }
                 }
+
                 if (currentRow > 0 && currentColumn < 7)
                 {
-                    ChessPlayerPlacementHandler rightDiagonalHandler = GetChessPlayerPlacementHandler(currentRow - 1, currentColumn + 1);
-                    if (rightDiagonalHandler != null && rightDiagonalHandler.IsWhite != isWhite)
+                    ChessPlayerPlacementHandler captureRightHandler = GetChessPlayerPlacementHandler(currentRow - 1, currentColumn + 1);
+                    if (captureRightHandler != null && captureRightHandler.IsWhite != isWhite)
                     {
-                        // Enemy piece in the right diagonal position
-                        boardPlacementHandler.Highlight(currentRow - 1, currentColumn + 1);
+                        CreateHighlight(currentRow - 1, currentColumn + 1);
                     }
                 }
             }
         }
+
         private ChessPlayerPlacementHandler GetChessPlayerPlacementHandler(int row, int column)
         {
             Collider2D[] colliders = Physics2D.OverlapPointAll(boardPlacementHandler.GetTile(row, column).transform.position);
@@ -111,6 +150,21 @@ namespace Chess.Scripts.Core
             }
             return null;
         }
-    }
 
+        private void CreateHighlight(int row, int column)
+        {
+            GameObject highlight = Instantiate(_highlightPrefab, boardPlacementHandler.GetTile(row, column).transform.position, Quaternion.identity, boardPlacementHandler.GetTile(row, column).transform);
+            highlighter = highlight.GetComponent<Highlighter>();
+            highlighter.OnHighlightCollision += OnHighlightCollision;
+        }
+
+        private void OnHighlightCollision(bool isHitBlack)
+        {
+            if (isHitBlack)
+            {
+                // Stop creating highlights
+                highlighter.OnHighlightCollision -= OnHighlightCollision;
+            }
+        }
+    }
 }

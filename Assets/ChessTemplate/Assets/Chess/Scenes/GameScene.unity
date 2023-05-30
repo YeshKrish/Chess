@@ -203,6 +203,7 @@ GameObject:
   - component: {fileID: 60290584}
   - component: {fileID: 60290585}
   - component: {fileID: 60290586}
+  - component: {fileID: 60290587}
   m_Layer: 0
   m_Name: Queen
   m_TagString: BlackPiece
@@ -336,6 +337,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &60290587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 60290581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5614acd922a7b8c4e9de3aa0b1cb07cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isWhite: 0
+  _highlightPrefab: {fileID: 3575455442422821219, guid: 63e242f84ee31dd49b18bb41b8d1c522, type: 3}
 --- !u!1 &81620425
 GameObject:
   m_ObjectHideFlags: 0
@@ -542,8 +557,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7d0d607122f458d97ba7f7c19066613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  row: 4
-  column: 4
+  row: 3
+  column: 3
 --- !u!212 &94910706
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -682,6 +697,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isWhite: 1
+  _highlightPrefab: {fileID: 3575455442422821219, guid: 63e242f84ee31dd49b18bb41b8d1c522, type: 3}
 --- !u!114 &96839286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1083,6 +1099,7 @@ GameObject:
   - component: {fileID: 280411638}
   - component: {fileID: 280411639}
   - component: {fileID: 280411640}
+  - component: {fileID: 280411641}
   m_Layer: 0
   m_Name: Rook
   m_TagString: BlackPiece
@@ -1216,6 +1233,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &280411641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280411635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc08edeb6add64748b2170daa30446b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isWhite: 0
+  _highlightPrefab: {fileID: 3575455442422821219, guid: 63e242f84ee31dd49b18bb41b8d1c522, type: 3}
 --- !u!1 &283930264
 GameObject:
   m_ObjectHideFlags: 0
@@ -1423,6 +1454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isWhite: 1
+  _highlightPrefab: {fileID: 3575455442422821219, guid: 63e242f84ee31dd49b18bb41b8d1c522, type: 3}
 --- !u!114 &295180530
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1435,7 +1467,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7d0d607122f458d97ba7f7c19066613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  row: 1
+  row: 2
   column: 2
 --- !u!212 &295180531
 SpriteRenderer:
@@ -1702,6 +1734,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isWhite: 0
+  _highlightPrefab: {fileID: 3575455442422821219, guid: 63e242f84ee31dd49b18bb41b8d1c522, type: 3}
 --- !u!61 &309589168
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1925,6 +1958,7 @@ GameObject:
   - component: {fileID: 354243241}
   - component: {fileID: 354243242}
   - component: {fileID: 354243243}
+  - component: {fileID: 354243244}
   m_Layer: 0
   m_Name: Bishop
   m_TagString: BlackPiece
@@ -2058,6 +2092,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &354243244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 354243238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 221c16ca8e43fb54e828ab5fe7ceca80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isWhite: 0
+  _highlightPrefab: {fileID: 3575455442422821219, guid: 63e242f84ee31dd49b18bb41b8d1c522, type: 3}
 --- !u!1 &361327009
 GameObject:
   m_ObjectHideFlags: 0
@@ -2439,6 +2487,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isWhite: 0
+  _highlightPrefab: {fileID: 3575455442422821219, guid: 63e242f84ee31dd49b18bb41b8d1c522, type: 3}
 --- !u!61 &409402682
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2692,7 +2741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7d0d607122f458d97ba7f7c19066613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  row: 1
+  row: 0
   column: 4
 --- !u!212 &436212029
 SpriteRenderer:
@@ -2872,6 +2921,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isWhite: 0
+  _highlightPrefab: {fileID: 3575455442422821219, guid: 63e242f84ee31dd49b18bb41b8d1c522, type: 3}
 --- !u!61 &436799130
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2963,6 +3013,7 @@ GameObject:
   - component: {fileID: 451512799}
   - component: {fileID: 451512800}
   - component: {fileID: 451512801}
+  - component: {fileID: 451512802}
   m_Layer: 0
   m_Name: King
   m_TagString: BlackPiece
@@ -3096,6 +3147,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &451512802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451512796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c283c5aab0b14c499892c1ddca7a94f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isWhite: 0
+  _highlightPrefab: {fileID: 3575455442422821219, guid: 63e242f84ee31dd49b18bb41b8d1c522, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -3386,6 +3451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isWhite: 1
+  _highlightPrefab: {fileID: 3575455442422821219, guid: 63e242f84ee31dd49b18bb41b8d1c522, type: 3}
 --- !u!114 &578518928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3523,7 +3589,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7d0d607122f458d97ba7f7c19066613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  row: 0
+  row: 4
   column: 3
 --- !u!212 &623366153
 SpriteRenderer:
@@ -4061,6 +4127,7 @@ GameObject:
   - component: {fileID: 755527377}
   - component: {fileID: 755527378}
   - component: {fileID: 755527379}
+  - component: {fileID: 755527380}
   m_Layer: 0
   m_Name: Knight
   m_TagString: BlackPiece
@@ -4194,6 +4261,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &755527380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 755527374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00bb0fea3a7dc1143879da3fb40106a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isWhite: 0
+  _highlightPrefab: {fileID: 3575455442422821219, guid: 63e242f84ee31dd49b18bb41b8d1c522, type: 3}
 --- !u!1 &877052905
 GameObject:
   m_ObjectHideFlags: 0
@@ -4426,7 +4507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7d0d607122f458d97ba7f7c19066613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  row: 6
+  row: 5
   column: 7
 --- !u!114 &969461839
 MonoBehaviour:
@@ -4441,6 +4522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isWhite: 0
+  _highlightPrefab: {fileID: 3575455442422821219, guid: 63e242f84ee31dd49b18bb41b8d1c522, type: 3}
 --- !u!61 &969461840
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4560,8 +4642,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7d0d607122f458d97ba7f7c19066613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  row: 4
-  column: 2
+  row: 2
+  column: 1
 --- !u!212 &988456210
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4700,6 +4782,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isWhite: 1
+  _highlightPrefab: {fileID: 3575455442422821219, guid: 63e242f84ee31dd49b18bb41b8d1c522, type: 3}
 --- !u!114 &1008906743
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5012,6 +5095,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isWhite: 0
+  _highlightPrefab: {fileID: 3575455442422821219, guid: 63e242f84ee31dd49b18bb41b8d1c522, type: 3}
 --- !u!61 &1126575670
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5412,6 +5496,7 @@ GameObject:
   - component: {fileID: 1285433206}
   - component: {fileID: 1285433207}
   - component: {fileID: 1285433208}
+  - component: {fileID: 1285433209}
   m_Layer: 0
   m_Name: Bishop
   m_TagString: BlackPiece
@@ -5545,6 +5630,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1285433209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285433203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 221c16ca8e43fb54e828ab5fe7ceca80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isWhite: 0
+  _highlightPrefab: {fileID: 3575455442422821219, guid: 63e242f84ee31dd49b18bb41b8d1c522, type: 3}
 --- !u!1 &1328010219
 GameObject:
   m_ObjectHideFlags: 0
@@ -5752,6 +5851,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isWhite: 1
+  _highlightPrefab: {fileID: 3575455442422821219, guid: 63e242f84ee31dd49b18bb41b8d1c522, type: 3}
 --- !u!114 &1339501777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5830,6 +5930,7 @@ GameObject:
   - component: {fileID: 1342563079}
   - component: {fileID: 1342563080}
   - component: {fileID: 1342563081}
+  - component: {fileID: 1342563082}
   m_Layer: 0
   m_Name: Knight
   m_TagString: BlackPiece
@@ -5963,6 +6064,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1342563082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1342563076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00bb0fea3a7dc1143879da3fb40106a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isWhite: 0
+  _highlightPrefab: {fileID: 3575455442422821219, guid: 63e242f84ee31dd49b18bb41b8d1c522, type: 3}
 --- !u!1 &1440357538
 GameObject:
   m_ObjectHideFlags: 0
@@ -6326,7 +6441,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7d0d607122f458d97ba7f7c19066613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  row: 6
+  row: 3
   column: 5
 --- !u!114 &1486999846
 MonoBehaviour:
@@ -6341,6 +6456,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isWhite: 0
+  _highlightPrefab: {fileID: 3575455442422821219, guid: 63e242f84ee31dd49b18bb41b8d1c522, type: 3}
 --- !u!61 &1486999847
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7072,6 +7188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isWhite: 1
+  _highlightPrefab: {fileID: 3575455442422821219, guid: 63e242f84ee31dd49b18bb41b8d1c522, type: 3}
 --- !u!114 &1703119642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7250,6 +7367,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isWhite: 0
+  _highlightPrefab: {fileID: 3575455442422821219, guid: 63e242f84ee31dd49b18bb41b8d1c522, type: 3}
 --- !u!61 &1707383403
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7410,6 +7528,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isWhite: 0
+  _highlightPrefab: {fileID: 3575455442422821219, guid: 63e242f84ee31dd49b18bb41b8d1c522, type: 3}
 --- !u!61 &1723691870
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7530,6 +7649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isWhite: 1
+  _highlightPrefab: {fileID: 3575455442422821219, guid: 63e242f84ee31dd49b18bb41b8d1c522, type: 3}
 --- !u!114 &1744834690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8078,6 +8198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isWhite: 1
+  _highlightPrefab: {fileID: 3575455442422821219, guid: 63e242f84ee31dd49b18bb41b8d1c522, type: 3}
 --- !u!114 &1980477957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8156,6 +8277,7 @@ GameObject:
   - component: {fileID: 2003609499}
   - component: {fileID: 2003609500}
   - component: {fileID: 2003609501}
+  - component: {fileID: 2003609502}
   m_Layer: 0
   m_Name: Rook
   m_TagString: BlackPiece
@@ -8289,6 +8411,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &2003609502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003609496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc08edeb6add64748b2170daa30446b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isWhite: 0
+  _highlightPrefab: {fileID: 3575455442422821219, guid: 63e242f84ee31dd49b18bb41b8d1c522, type: 3}
 --- !u!1 &2059979822
 GameObject:
   m_ObjectHideFlags: 0
