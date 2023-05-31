@@ -8,7 +8,7 @@ namespace Chess.Scripts.Core
     {
         [SerializeField] public int row, column;
 
-        private bool isWhite; // Determine the color based on tag
+        private bool isWhite; 
 
         private void Start()
         {

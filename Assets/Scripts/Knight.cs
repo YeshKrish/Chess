@@ -4,7 +4,7 @@ namespace Chess.Scripts.Core
 {
     public class Knight : MonoBehaviour
     {
-        [SerializeField] private bool isWhite; // Set this to true if it's a white knight
+        [SerializeField] private bool isWhite;
 
         private ChessBoardPlacementHandler boardPlacementHandler;
         private ChessPlayerPlacementHandler playerPlacementHandler;

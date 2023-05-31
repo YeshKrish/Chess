@@ -556,8 +556,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7d0d607122f458d97ba7f7c19066613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  row: 4
-  column: 5
+  row: 0
+  column: 2
 --- !u!212 &94910706
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1462,7 +1462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7d0d607122f458d97ba7f7c19066613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  row: 2
+  row: 1
   column: 2
 --- !u!212 &295180531
 SpriteRenderer:
@@ -1714,7 +1714,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7d0d607122f458d97ba7f7c19066613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  row: 4
+  row: 6
   column: 3
 --- !u!114 &309589167
 MonoBehaviour:
@@ -2414,7 +2414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7d0d607122f458d97ba7f7c19066613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  row: 2
+  row: 6
   column: 1
 --- !u!212 &409402680
 SpriteRenderer:
@@ -2733,8 +2733,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7d0d607122f458d97ba7f7c19066613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  row: 5
-  column: 3
+  row: 0
+  column: 4
 --- !u!212 &436212029
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2897,7 +2897,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7d0d607122f458d97ba7f7c19066613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  row: 5
+  row: 6
   column: 0
 --- !u!114 &436799129
 MonoBehaviour:
@@ -3088,7 +3088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7d0d607122f458d97ba7f7c19066613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  row: 5
+  row: 7
   column: 4
 --- !u!61 &451512800
 BoxCollider2D:
@@ -3577,8 +3577,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7d0d607122f458d97ba7f7c19066613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  row: 5
-  column: 2
+  row: 0
+  column: 3
 --- !u!212 &623366153
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3849,7 +3849,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7d0d607122f458d97ba7f7c19066613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  row: 3
+  row: 0
   column: 7
 --- !u!212 &655167382
 SpriteRenderer:
@@ -3987,7 +3987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7d0d607122f458d97ba7f7c19066613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  row: 4
+  row: 0
   column: 6
 --- !u!212 &678187251
 SpriteRenderer:
@@ -4197,8 +4197,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7d0d607122f458d97ba7f7c19066613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  row: 5
-  column: 5
+  row: 7
+  column: 1
 --- !u!61 &755527378
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4625,8 +4625,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7d0d607122f458d97ba7f7c19066613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  row: 6
-  column: 3
+  row: 0
+  column: 1
 --- !u!212 &988456210
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5992,8 +5992,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7d0d607122f458d97ba7f7c19066613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  row: 2
-  column: 4
+  row: 7
+  column: 6
 --- !u!61 &1342563080
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7174,7 +7174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7d0d607122f458d97ba7f7c19066613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  row: 4
+  row: 1
   column: 4
 --- !u!212 &1703119643
 SpriteRenderer:
@@ -7325,7 +7325,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7d0d607122f458d97ba7f7c19066613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  row: 5
+  row: 6
   column: 6
 --- !u!114 &1707383402
 MonoBehaviour:
@@ -7485,7 +7485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7d0d607122f458d97ba7f7c19066613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  row: 3
+  row: 6
   column: 2
 --- !u!114 &1723691869
 MonoBehaviour:
@@ -7632,7 +7632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7d0d607122f458d97ba7f7c19066613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  row: 3
+  row: 1
   column: 5
 --- !u!212 &1744834691
 SpriteRenderer:
@@ -8180,7 +8180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7d0d607122f458d97ba7f7c19066613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  row: 2
+  row: 1
   column: 7
 --- !u!212 &1980477958
 SpriteRenderer:
