@@ -6,7 +6,7 @@ namespace Chess.Scripts.Core
 {
     public class ChessPlayerPlacementHandler : MonoBehaviour
     {
-        [SerializeField] public int row, column;
+        public int row, column;
 
         private bool isWhite; 
 

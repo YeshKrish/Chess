@@ -21,6 +21,8 @@ namespace Chess.Scripts.Core
             int currentRow = playerPlacementHandler.row;
             int currentColumn = playerPlacementHandler.column;
 
+            GameManager.instance.SelectedChessPiece(gameObject);
+
             // Clear previous highlights
             boardPlacementHandler.ClearHighlights();
 

@@ -10,6 +10,7 @@ namespace Chess.Scripts.Core
         private ChessPlayerPlacementHandler playerPlacementHandler;
         private bool isFirstMove;
         private Vector2 startingPosition;
+        [SerializeField] private GameObject _highlightPrefab;
 
         private void Start()
         {
@@ -25,6 +26,8 @@ namespace Chess.Scripts.Core
         {
             int currentRow = playerPlacementHandler.row;
             int currentColumn = playerPlacementHandler.column;
+
+            GameManager.instance.SelectedChessPiece(gameObject);
 
             Debug.Log("isWhite" + (playerPlacementHandler.row > 1) + "Pler" + playerPlacementHandler.row);
 

@@ -13,6 +13,8 @@ namespace Chess.Scripts.Core
         private ChessBoardPlacementHandler boardPlacementHandler;
         private ChessPlayerPlacementHandler playerPlacementHandler;
 
+        public GameObject selectedChessPiece;
+
         private void Awake()
         {
             if(instance == null)
@@ -47,6 +49,8 @@ namespace Chess.Scripts.Core
         {
             GameObject highlight = Instantiate(_highlightPrefab, boardPlacementHandler.GetTile(row, column).transform.position, Quaternion.identity, boardPlacementHandler.GetTile(row, column).transform);
             highlighter = highlight.GetComponent<Highlighter>();
+            highlighter.newRow = row;
+            highlighter.newColumn = column;
             highlighter.OnHighlightCollision += OnHighlightCollision;
         }
 
@@ -57,6 +61,11 @@ namespace Chess.Scripts.Core
                 // Stop creating highlights
                 highlighter.OnHighlightCollision -= OnHighlightCollision;
             }
+        }
+        public GameObject SelectedChessPiece(GameObject selectedPiece)
+        {
+            selectedChessPiece = selectedPiece;
+            return selectedChessPiece;
         }
     }
 
